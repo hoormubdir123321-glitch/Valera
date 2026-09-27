@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  --font-cinzel: "Cinzel", serif;
+  --font-cairo: "Cairo", sans-serif;
+  --font-amiri: "Amiri", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  font-family: "Cairo", sans-serif;
+  color-scheme: dark;
+}
+
+/* Manhwa Vignette and Grain */
+.manhwa-vignette {
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85);
+}
+
+.manhwa-letterbox {
+  border-top: 12px solid #0a0a0a;
+  border-bottom: 12px solid #0a0a0a;
+}
+
+/* Atmospheric Steam Scanline Animation */
+@keyframes steamDrift {
+  0% { transform: translateY(0) scaleY(1); opacity: 0.15; }
+  50% { transform: translateY(-10px) scaleY(1.05); opacity: 0.3; }
+  100% { transform: translateY(0) scaleY(1); opacity: 0.15; }
+}
+
+.animate-steam {
+  animation: steamDrift 6s ease-in-out infinite;
+}
+
+/* Screen Shake Levels for Suspicion Changes & Direct System Intervention */
+@keyframes cameraShakeLight {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1.5px) rotate(-0.25deg); }
+  75% { transform: translate(2px, -1.5px) rotate(0.25deg); }
+}
+
+@keyframes cameraShakeMedium {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, 3px) rotate(-0.6deg); }
+  40% { transform: translate(4.5px, -3px) rotate(0.6deg); }
+  60% { transform: translate(-3.5px, -2.5px) rotate(-0.4deg); }
+  80% { transform: translate(3px, 2.5px) rotate(0.4deg); }
+}
+
+@keyframes cameraShakeViolent {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); filter: none; }
+  15% { transform: translate(-8px, 6px) rotate(-1.5deg); filter: drop-shadow(0 0 12px rgba(225, 29, 72, 0.7)); }
+  30% { transform: translate(9px, -7px) rotate(1.4deg); }
+  45% { transform: translate(-7px, -6px) rotate(-1deg); filter: drop-shadow(0 0 18px rgba(225, 29, 72, 0.85)); }
+  60% { transform: translate(7px, 5px) rotate(1.1deg); }
+  75% { transform: translate(-5px, 4px) rotate(-0.6deg); }
+  90% { transform: translate(4px, -3px) rotate(0.3deg); }
+}
+
+.shake-screen,
+.shake-medium {
+  animation: cameraShakeMedium 0.35s ease-in-out;
+}
+
+.shake-light {
+  animation: cameraShakeLight 0.25s ease-in-out;
+}
+
+.shake-violent {
+  animation: cameraShakeViolent 0.55s ease-in-out;
+}
+
+/* ==========================================================================
+   Gothic Manhwa Character Motion Keyframes (First Motion Prototype)
+   ========================================================================== */
+
+/* 1. Doctor Torso & Head: Subtle breathing & natural head tilt */
+@keyframes doctorBodyMotion {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  35% {
+    transform: translateY(-3px) rotate(0.45deg);
+  }
+  70% {
+    transform: translateY(-1.2px) rotate(-0.3deg);
+  }
+}
+
+/* 2. Doctor Arm & Hand: Actual physical reach toward patient and scalpel instrument */
+@keyframes doctorArmMotion {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  30% {
+    transform: translate(-9px, 8px) rotate(-2deg);
+  }
+  60% {
+    transform: translate(-18px, 15px) rotate(-3.8deg);
+  }
+  80% {
+    transform: translate(-10px, 9px) rotate(-1.8deg);
+  }
+}
+
+/* 3. Scalpel & Surgical Instrument: Wrist drift and silver reflection */
+@keyframes scalpelMotion {
+  0%, 100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  30% {
+    transform: translate(-10px, 9px) rotate(-2.2deg);
+  }
+  60% {
+    transform: translate(-20px, 17px) rotate(-4.2deg);
+  }
+  80% {
+    transform: translate(-11px, 10px) rotate(-2deg);
+  }
+}
+
+/* 4. Valeria Supine Body: Natural human respiration (shroud & ribcage rise/fall) */
+@keyframes valeriaBodyMotion {
+  0%, 100% {
+    transform: translateY(0px) scaleY(1);
+  }
+  50% {
+    transform: translateY(-4px) scaleY(1.032);
+  }
+}
+
+/* 5. Valeria Head: Subtle involuntary micro-reaction & neck twitch */
+@keyframes valeriaHeadMotion {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  45% {
+    transform: translateY(-1.5px) rotate(-0.75deg);
+  }
+  80% {
+    transform: translateY(0.5px) rotate(0.35deg);
+  }
+}
+
+/* 6. Natural eyelid blink cycle (subtle closure and re-opening) */
+@keyframes eyeBlink {
+  0%, 68%, 74%, 82%, 88%, 100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  71%, 85% {
+    transform: scaleY(0.08);
+    opacity: 0.85;
+  }
+}
+
+/* Layer-specific character animation classes */
+.animate-doctor-body {
+  animation: doctorBodyMotion 4.8s ease-in-out infinite;
+  transform-origin: 48% 18%;
+}
+
+.animate-doctor-arm {
+  animation: doctorArmMotion 5.6s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  transform-origin: 58% 28%;
+}
+
+.animate-doctor-scalpel {
+  animation: scalpelMotion 5.6s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  transform-origin: 52% 48%;
+}
+
+.animate-valeria-body {
+  animation: valeriaBodyMotion 3.8s ease-in-out infinite;
+  transform-origin: 38% 68%;
+}
+
+.animate-valeria-head {
+  animation: valeriaHeadMotion 4.2s ease-in-out infinite;
+  transform-origin: 28% 58%;
+}
+
+.animate-eye-blink {
+  animation: eyeBlink 5.4s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+/* Legacy utility animation classes */
+.animate-breathing {
+  animation: valeriaBodyMotion 3.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.animate-head-bobble {
+  animation: doctorBodyMotion 4.6s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+.animate-arm-reach {
+  animation: doctorArmMotion 5.2s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+  transform-origin: 58% 28%;
+}
+
+/* Custom Scrollbar for Gothic Story Reader */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2b36;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #474759;
+}

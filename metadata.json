@@ -1,0 +1,6 @@
+{
+  "name": "Valeria: The Contract - Narrative Engine",
+  "description": "رواية تفاعلية ومحرك سردي سينمائي سوداوي في إمبراطورية فيكتورية صناعية مع نظام واعي وبدايات متعددة.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
